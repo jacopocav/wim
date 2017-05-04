@@ -96,9 +96,9 @@ L'analisi del sito è stata effettuata durante il mese di Maggio 2017.
 
 \section{Analisi} % (fold)
 \label{sec:analisi}
-Di seguito viene esposta l'analisi di usabilità del sito. Per ogni sezione verrà fornita anche una lista di aspetti positivi \cmark e negativi \xmark (se presenti).
+Di seguito viene esposta l'analisi di usabilità del sito. All'interno del testo si potranno trovare simboli \cmark per denotare aspetti positivi, e \xmark per aspetti negativi.
 
-\emph{NB: le immagini riportate di seguito sono contenute nella cartella \texttt{pic}. È inoltre possibile cliccare le immagini per aprirle in una finestra separata.}
+\emph{\textbf{NB}: le immagini riportate di seguito sono contenute nella cartella \texttt{pic}. È inoltre possibile cliccare le immagini per aprirle direttamente.}
 \subsection{Nome del sito}
 \label{sec:nome-sito}
 \begin{itemize}
@@ -110,12 +110,52 @@ Il nome è nel complesso buono perché breve ed efficace: è facile intuire il c
 \clearpage
 \subsection{Homepage}
 \label{sub:homepage}
-Poiché la homepage del sito è molto lunga, la relativa immagine è stata spezzata in più parti. Per vedere l'immagine completa si consulti il file \href{pic/homepage_lunga.jpeg}{\underline{homepage\_lunga.jpeg}}.
+Poiché la homepage del sito è molto lunga, si consiglia di visualizzare il file \href{pic/homepage_lunga.jpeg}{\underline{homepage\_lunga.jpeg}}.
 \begin{figure}[h]
 \centering
-\href{pic/homepage1.png}{\includegraphics[width=.8\textwidth]{homepage1}}
-\caption{\href{pic/homepage1.png}{Homepage del sito - prima schermata}}
+\href{pic/homepage1.png}{\includegraphics[height=0.5\textheight]{homepage_lunga}}
+\caption{\href{pic/homepage_lunga.jpeg}{Homepage del sito - prima schermata}}
 \end{figure}
+\subsubsection{Struttura}
+\label{sub:home-struttura}
+La \emph{homepage} è strutturata nel seguente modo:
+\begin{itemize}
+    \item È presente un'\textbf{header} contenente il logo del sito (che serve anche da link di ritorno alla home), i pulsanti di navigazione, di ricerca e di registrazione/login.
+    \begin{itemize}
+        \item È inoltre presente un menu \emph{hamburger} attraverso cui gli utenti registrati possono accedere alle categorie di notizie da loro scelte.
+        \item I pulsanti di navigazione presentano un menu a comparsa (fig.~\ref{fig:menu-nav}) quando il mouse ci passa sopra. Nel menu è possibile vedere subito gli articoli attinenti più recenti ed accedere velocemente agli articoli scritti in passato.
+        \begin{figure}[h]
+            \centering
+            \href{pic/menu_nav.jpg}{\includegraphics[width=\textwidth]{menu_nav}}
+            \label{fig:menu-nav}
+            \caption{\href{pic/menu_nav.jpg}{Menu a comparsa della sezione \emph{news}}}
+        \end{figure}
+    \end{itemize}
+    \item Immediatamente sotto l'header è presente un banner pubblicitario
+    \item Subito sotto c'è la \textbf{vetrina} con gli articoli principali del momento, e un altro banner pubblicitario a destra
+    \item Sotto comincia la sezione con gli \textbf{articoli} ordinati in ``gruppi'' suddivisi per giorno di pubblicazione. In ogni gruppo gli articoli sono ordinati in modo cronologico secondo la seguente struttura:
+    \begin{itemize}
+        \item I 2 articoli più recenti sono ingranditi e affiancati.
+        \item I successivi 4 articoli sono più piccoli e sono in sequenza verticale, e mostrano anche le prime parole del contenuto.
+        \item I restanti sono ancora più piccoli e organizzati in griglia.
+    \end{itemize}
+    \item A destra della sezione articoli sono presenti vari contenuti consigliati, tra articoli e discussioni sul forum, e collegamenti ai canali social del sito.
+    \item Sotto la sezione articoli, è presente una sezione con gli ultimi video pubblicati su \emph{Youtube}, un'altra con le ultime recensioni e, infine, una con le ultime foto postate dai redattori sul canale \emph{Instagram} del sito.
+    \item Infine, nel \textbf{footer} e presente una barra di link per la ricerca di titoli che cominciano per una determinata lettera, una griglia contenente link agli articoli più popolari del momento, riferimenti ai profili del sito sui principali social network e link informativi sul sito.
+\end{itemize}
+\subsubsection{Analisi}
+\label{sub:home-analisi}
+Come prima impressione, la pagina è sicuramente \textbf{troppo lunga e densa} \xmark: sono richiesti troppi \emph{scroll} per essere vista interamente. Sarebbe stato meglio spezzare il corpo del sito in più pagine (ad esempio, mostrare solo gli articoli e i contenuti di oggi).
+Per quanto riguarda i 6 assi informativi, sono state fatte le seguenti osservazioni:
+\begin{description}
+    \item[Where] (\emph{dove siamo arrivati?}) \hfill \\ Nonostante non sia presente una breve descrizione del sito in cima alla pagina \xmark, è abbastanza chiaro già dal logo e dal nome del sito il contenuto dello stesso \cmark; inoltre, la presenza del pulsante di navigazione \emph{news} relativamente in alto a sinistra nella prima schermata fa intendere che il sito si occupi principalmente di notizie sul mondo Nintendo \cmark.
+    \item[Who] (\emph{chi c'è dietro al sito?}) \hfill \\ Non c'è alcuna informazione a riguardo nella prima schermata che l'utente vede \xmark: le uniche informazioni sono presenti nel footer, a più di 10 scroll dall'inizio \xmark.
+    \item[Why] (\emph{perché dovrei visitare il sito?}) \hfill \\ Questa domanda viene risposta in maniera implicita dai pulsanti di navigazione dell'header \cmark, che mostrano le varie tipologie di contenuti che il sito offre.
+    \item[What] (\emph{che cosa offre il sito?}) \hfill \\  La vetrina è la risposta perfetta alla domanda \cmark; in misura minore, anche i tasti di navigazione (e i relativi menu a comparsa) mostrano l'offerta del sito \cmark.
+    \item[When] (\emph{quali sono le ultime novità del sito?}) \hfill \\ Il pulsante \emph{news} è una delle prime cose che salta all'occhio \cmark; la vetrina riporta gli articoli più recenti e importanti \cmark; infine, la sezione articoli sottostante alla vetrina risponde perfettamente alla domanda \cmark, anche se richiede uno scroll per essere vista \xmark.
+    \item[How] (\emph{come arrivo a ciò che mi interessa?}) \hfill \\ La barra di navigazione e i menu a comparsa sono molto efficaci \cmark; inoltre, per gli utenti registrati è possibile usare il menu \emph{hamburger} per arrivare più facilmente ai contenuti per loro interessanti \cmark.
+\end{description}
+Nel complesso l'utente, a una prima visita, dovrebbe essere in grado di capire facilmente che cosa offre il sito e come usufruirne \cmark.
 
 \section{Lista Immagini}
 \label{sec:immagini}
