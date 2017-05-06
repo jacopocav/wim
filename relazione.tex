@@ -1,3 +1,7 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = relazione.tex
+% !TEX spellcheck = it-IT
 \documentclass[12pt, a4paper,titlepage]{article}
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
@@ -23,10 +27,32 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 \fancyhf{}% Clear header/footer
-\fancyfoot[L]{\textsc{Piano di lavoro}}
-\fancyfoot[R]{\thepage\ di \pageref{LastPage}}% \fancyfoot[R]{\thepage}
+\fancyfoot[L]{\slshape\rightmark}
+\fancyfoot[R]{Pag. \thepage\ di \pageref{LastPage}}% \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}% Default \headrulewidth is 0.4pt
 \renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+\usepackage{letltxmacro}
+\usepackage{pgffor}
+
+
+%% https://tex.stackexchange.com/questions/14393/how-keep-a-running-list-of-strings-and-then-process-them-one-at-a-time
+\newcommand\FigList{}
+\newcommand\AddFigToList[1]{\edef\FigList{\FigList#1,}}
+
+\LetLtxMacro{\OldIncludegraphics}{\includegraphics}
+\renewcommand{\includegraphics}[2][]{%
+    \AddFigToList{#2}%
+    \OldIncludegraphics[#1]{#2}%
+}
+
+\newcommand*{\ShowListOfFigures}{%
+    \typeout{Figures included were}%
+    \foreach \x in \FigList {%
+        %\par\x% <-- uncomment if you want the list in the PDF as well
+        \typeout{ \x}
+    }%
+}
+\AtEndDocument{\ShowListOfFigures}
 
 %fine impostazioni
 \begin{document}
@@ -75,7 +101,7 @@ Jacopo Cavallarin, 1131015
 \end{titlepage}
 \newpage
 \tableofcontents
-\listoffigures
+%\listoffigures
 \thispagestyle{empty}
 \clearpage
 \pagenumbering{arabic}
@@ -108,56 +134,13 @@ Di seguito viene esposta l'analisi di usabilità del sito. All'interno del testo
 \end{itemize}
 Il nome è nel complesso buono perché breve ed efficace: è facile intuire il contenuto del sito a partire dal nome.
 \clearpage
-\subsection{Homepage}
-\label{sub:homepage}
-Poiché la homepage del sito è molto lunga, si consiglia di visualizzare il file \href{pic/homepage_lunga.jpeg}{\underline{homepage\_lunga.jpeg}}.
-\begin{figure}[h]
-\centering
-\href{pic/homepage1.png}{\includegraphics[height=0.5\textheight]{homepage_lunga}}
-\caption{\href{pic/homepage_lunga.jpeg}{Homepage del sito - prima schermata}}
-\end{figure}
-\subsubsection{Struttura}
-\label{sub:home-struttura}
-La \emph{homepage} è strutturata nel seguente modo:
-\begin{itemize}
-    \item È presente un'\textbf{header} contenente il logo del sito (che serve anche da link di ritorno alla home), i pulsanti di navigazione, di ricerca e di registrazione/login.
-    \begin{itemize}
-        \item È inoltre presente un menu \emph{hamburger} attraverso cui gli utenti registrati possono accedere alle categorie di notizie da loro scelte.
-        \item I pulsanti di navigazione presentano un menu a comparsa (fig.~\ref{fig:menu-nav}) quando il mouse ci passa sopra. Nel menu è possibile vedere subito gli articoli attinenti più recenti ed accedere velocemente agli articoli scritti in passato.
-        \begin{figure}[h]
-            \centering
-            \href{pic/menu_nav.jpg}{\includegraphics[width=\textwidth]{menu_nav}}
-            \label{fig:menu-nav}
-            \caption{\href{pic/menu_nav.jpg}{Menu a comparsa della sezione \emph{news}}}
-        \end{figure}
-    \end{itemize}
-    \item Immediatamente sotto l'header è presente un banner pubblicitario
-    \item Subito sotto c'è la \textbf{vetrina} con gli articoli principali del momento, e un altro banner pubblicitario a destra
-    \item Sotto comincia la sezione con gli \textbf{articoli} ordinati in ``gruppi'' suddivisi per giorno di pubblicazione. In ogni gruppo gli articoli sono ordinati in modo cronologico secondo la seguente struttura:
-    \begin{itemize}
-        \item I 2 articoli più recenti sono ingranditi e affiancati.
-        \item I successivi 4 articoli sono più piccoli e sono in sequenza verticale, e mostrano anche le prime parole del contenuto.
-        \item I restanti sono ancora più piccoli e organizzati in griglia.
-    \end{itemize}
-    \item A destra della sezione articoli sono presenti vari contenuti consigliati, tra articoli e discussioni sul forum, e collegamenti ai canali social del sito.
-    \item Sotto la sezione articoli, è presente una sezione con gli ultimi video pubblicati su \emph{Youtube}, un'altra con le ultime recensioni e, infine, una con le ultime foto postate dai redattori sul canale \emph{Instagram} del sito.
-    \item Infine, nel \textbf{footer} e presente una barra di link per la ricerca di titoli che cominciano per una determinata lettera, una griglia contenente link agli articoli più popolari del momento, riferimenti ai profili del sito sui principali social network e link informativi sul sito.
-\end{itemize}
-\subsubsection{Analisi}
-\label{sub:home-analisi}
-Come prima impressione, la pagina è sicuramente \textbf{troppo lunga e densa} \xmark: sono richiesti troppi \emph{scroll} per essere vista interamente. Sarebbe stato meglio spezzare il corpo del sito in più pagine (ad esempio, mostrare solo gli articoli e i contenuti di oggi).
-Per quanto riguarda i 6 assi informativi, sono state fatte le seguenti osservazioni:
-\begin{description}
-    \item[Where] (\emph{dove siamo arrivati?}) \hfill \\ Nonostante non sia presente una breve descrizione del sito in cima alla pagina \xmark, è abbastanza chiaro già dal logo e dal nome del sito il contenuto dello stesso \cmark; inoltre, la presenza del pulsante di navigazione \emph{news} relativamente in alto a sinistra nella prima schermata fa intendere che il sito si occupi principalmente di notizie sul mondo Nintendo \cmark.
-    \item[Who] (\emph{chi c'è dietro al sito?}) \hfill \\ Non c'è alcuna informazione a riguardo nella prima schermata che l'utente vede \xmark: le uniche informazioni sono presenti nel footer, a più di 10 scroll dall'inizio \xmark.
-    \item[Why] (\emph{perché dovrei visitare il sito?}) \hfill \\ Questa domanda viene risposta in maniera implicita dai pulsanti di navigazione dell'header \cmark, che mostrano le varie tipologie di contenuti che il sito offre.
-    \item[What] (\emph{che cosa offre il sito?}) \hfill \\  La vetrina è la risposta perfetta alla domanda \cmark; in misura minore, anche i tasti di navigazione (e i relativi menu a comparsa) mostrano l'offerta del sito \cmark.
-    \item[When] (\emph{quali sono le ultime novità del sito?}) \hfill \\ Il pulsante \emph{news} è una delle prime cose che salta all'occhio \cmark; la vetrina riporta gli articoli più recenti e importanti \cmark; infine, la sezione articoli sottostante alla vetrina risponde perfettamente alla domanda \cmark, anche se richiede uno scroll per essere vista \xmark.
-    \item[How] (\emph{come arrivo a ciò che mi interessa?}) \hfill \\ La barra di navigazione e i menu a comparsa sono molto efficaci \cmark; inoltre, per gli utenti registrati è possibile usare il menu \emph{hamburger} per arrivare più facilmente ai contenuti per loro interessanti \cmark.
-\end{description}
-Nel complesso l'utente, a una prima visita, dovrebbe essere in grado di capire facilmente che cosa offre il sito e come usufruirne \cmark.
+
+\input{homepage}
+\clearpage
+\input{articolo}
 
 \section{Lista Immagini}
 \label{sec:immagini}
+%\listoffigures
 
 \end{document}
